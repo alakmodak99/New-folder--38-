@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model</title>
+    <style>
+        #container{
+            height: 500px;
+            width: 500px;
+            background: grey;
+            position: absolute;
+            left:50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        #container >  button{
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+        #container > button:hover{
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        }
+        #PopUP{
+            height: 350px;
+            width: 350px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            
+            border-radius: 10px;
+            background: white;
+            display: none;
+            padding: 20px;
+        }
+        .accept{
+            padding: 5px;
+            background: green;
+            color: white;
+            border: none;
+            position: absolute;
+            right: 25%;
+            
+        }
+        .decline{
+            padding: 5px;
+            background: red;
+            color: white;
+            border: none;
+            position: absolute;
+            right: 10%;
+        }
+        #close{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border:none;
+            transition: 500ms ease-in-out;
+        }
+        #close:hover{
+            rotate: 90deg;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <button id="btn-1">Model 1</button>
+        <button id="btn-2">Model 2</button>
+        <button id="btn-3">Model 3</button>
+    </div>
+    <div id="PopUP"></div>
+    
+</body>
+</html>
+
+<script>
+    document.getElementById("btn-1").addEventListener("click", ()=>{
+        
+        POP("1")
+    })
+    document.getElementById("btn-2").addEventListener("click", ()=>{
+        POP("2")
+    })
+    document.getElementById("btn-3").addEventListener("click", ()=>{
+        POP("3")
+    })
+  function POP(elem){
+    const div = document.createElement("div")
+        div.innerHTML= `
+        <h3> This is a Model ${elem}</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi neque ipsam recusandae incidunt
+             assumenda saepe sapiente obcaecati quis eligendi, tenetur accusamus commodi qui veniam, officiis, est vitae nostrum nam nulla!</p>
+       <button class="accept">Accept</button>
+       <button class ="decline">Decline</button>
+       <button id="close">X</button>
+        `
+        const pop =document.getElementById("PopUP")
+        pop.style.display= "block"
+        pop.innerHTML=""
+        pop.append(div)
+        document.getElementById("close").addEventListener("click", ()=>{
+            document.getElementById("PopUP").style.display="none"
+        })
+
+  }
+</script>
